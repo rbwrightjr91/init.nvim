@@ -37,6 +37,9 @@ Plug 'tpope/vim-eunuch'                                 " run common Unix comman
 Plug 'machakann/vim-sandwich'                           " make sandwiches
 Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'folke/which-key.nvim'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
 
 "}}}
@@ -317,7 +320,8 @@ endfunction
 " ======================== Custom Mappings ====================== "{{{
 
 "" the essentials
-let mapleader=","
+nnoremap <SPACE> <Nop>
+let mapleader = "\<Space>"
 nnoremap ; :
 nmap \ <leader>q
 map <F6> :Startify <CR>
@@ -424,10 +428,20 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 
+" Ignore mouse clicks
+:nmap <LeftMouse> <nop>
+:imap <LeftMouse> <nop>
+:vmap <LeftMouse> <nop>
+
 "}}}
 
 
 " ======================== Additional sourcing ====================== "{{{
 source ~/.config/nvim/statusline.vim
+
+lua <<EOF
+require('colorizer').setup()
+require('which-key').setup {}
+EOF
 
 "}}}
