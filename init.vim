@@ -82,7 +82,7 @@ set scrolljump=5
 set lazyredraw
 set redrawtime=10000
 set synmaxcol=180
-set re=1
+set re=0
 
 " required by coc
 set hidden
